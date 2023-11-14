@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, HashRouter } from 'react-router-dom';
 import './index.css';
 import App from './App';
 import CharacterSearch from './pages/charactersearch/charactersearch';
@@ -13,18 +13,20 @@ import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="affixes" element={<Affixes />} />
-          <Route path="charactersearch" element={<CharacterSearch />} />
-          <Route path="home" element={<Home />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
-  </React.StrictMode>
+	<React.StrictMode>
+		<BrowserRouter>
+			<HashRouter basename="/">
+				<Routes>
+					<Route path="/" element={<Layout />}>
+						<Route index element={<Home />} />
+						<Route path="affixes" element={<Affixes />} />
+						<Route path="charactersearch" element={<CharacterSearch />} />
+						<Route path="home" element={<Home />} />
+					</Route>
+				</Routes>
+			</HashRouter>
+		</BrowserRouter>
+	</React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
